@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <button @click="getStudents">点我获取学生数据</button>
+      <button @click="getCar" >点我获取汽车数据</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import axios from 'axios'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: 'App',
+    methods:{
+      getStudents(){
+          axios.get('http://localhost:8080/jojo/students').then(
+              response => {
+                  console.log('请求成功了',response.data)
+              },
+              error => {
+                  console.log('请求失败了',error.message)
+              }
+          )
+      },
+      getCar(){
+          axios.get('http://localhost:8080/atguigu/cars').then(
+              response => {
+                  console.log('请求成功了',response.data)
+              },
+              error => {
+                  console.log('请求失败了',error.message)
+              }
+          )
+      }
+    }
+
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
