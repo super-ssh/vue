@@ -2,6 +2,7 @@
   <div id="app">
       <button @click="getStudents">点我获取学生数据</button>
       <button @click="getCar" >点我获取汽车数据</button>
+      <button>实验</button>
   </div>
 </template>
 
